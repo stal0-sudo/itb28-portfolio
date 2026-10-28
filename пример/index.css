@@ -10,8 +10,7 @@
     --line: #E6E9EE;
 }
 
-*,
-*::before,
+
 *::after {
     box-sizing: border-box;
     margin: 0;

@@ -1,129 +1,142 @@
-* {
+/* ---------- Base ---------- */
+:root {
+    --text: #21243D;
+    --muted: #8A93A6;
+    --accent: #FF6464;
+    --accent-hover: #f04f4f;
+    --link: #00A8CC;
+    --bg-soft: #EDF7FA;
+    --navy: #1B2A4E;
+    --line: #E6E9EE;
+}
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-family: Heebo, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text);
+    background: #fff;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a:focus-visible,
+.btn:focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 3px;
 }
 
 .container {
     width: 100%;
     max-width: 856px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
+/* ---------- Header ---------- */
 header {
-    width: 100%;
     padding: 24px 0;
 }
 
-ul {
-    list-style: none;
+.nav-list {
     display: flex;
-    justify-content: end;
-    gap: 40px
+    justify-content: flex-end;
+    gap: 40px;
 }
 
-li a {
-    font-family: Heebo, sans-serif;
+.nav-list a {
     font-weight: 500;
     font-size: 20px;
-    line-height: 100%;
-    letter-spacing: 0px;
-    text-align: right;
-    text-decoration: none;
-    color: #000000;
+    color: #000;
+    transition: color .2s;
 }
 
-main {
-    padding:71px 0 ;   
+.nav-list a:hover {
+    color: var(--accent);
+}
+
+/* ---------- Hero ---------- */
+.hero {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-}
-
-.left {
-    display: flex;  
     gap: 40px;
-    flex-direction: column;
+    padding-top: 71px;
+    padding-bottom: 71px;
 }
 
-.left h1 {
-    font-family: Heebo, sans-serif;
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+.hero h1 {
     font-weight: 700;
     font-size: 44px;
     line-height: 60px;
-    letter-spacing: 0px;
-    color: #21243D;
 }
 
-.left p {
+.hero p {
     max-width: 497px;
-    font-family: Heebo, sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 100%;
-    letter-spacing: 0px;
-    color: #21243D;
+    line-height: 1.6;
 }
 
-.download {
-    font-family: Heebo, sans-serif;
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
     font-weight: 500;
     font-size: 20px;
-    line-height: 100%;
-    letter-spacing: 0px;
-    color: #ffffff;
-    width: 208px;
-    height: 47px;
-    opacity: 1;
-    border-radius: 2px;
-    background: #FF6464;
-    padding: 8px 12px;
+    line-height: 1.2;
+    color: #fff;
+    background: var(--accent);
     border: none;
+    border-radius: 2px;
     cursor: pointer;
+    transition: background .2s;
 }
 
-.right img {
+.btn:hover {
+    background: var(--accent-hover);
+}
+
+.avatar {
+    flex-shrink: 0;
     width: 243px;
     height: 243px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    /* бледно-голубое «кольцо», смещённое вниз-влево, как в макете */
+    box-shadow: -8px 8px 0 0 #DCEEF4;
 }
 
-@media screen and (max-width: 425px) {
-    main{
-        flex-direction: column-reverse;
-        padding: 24px;   
-
-    }
-
-    .left, .right{
-        width: 100%;
-        display: flex;
-        align-items: center;
-    }
-
-    .left h1{
-        font-family: Heebo, sans-serif;
-        font-size: 44px;
-
-    }
-
-}
-
-/* Фоновый цвет для всей секции */
+/* ---------- Recent posts ---------- */
 .recent-posts {
-    background-color: #EDF7FA;
-    padding: 30px 0 60px 0;
+    background: var(--bg-soft);
+    padding: 30px 0 24px;
 }
-/* Контейнер для выравнивания */
-.recent-posts .container {
-    max-width:856px;/* или ширина твоего макета */
-    margin: 0 auto;
-    padding: 0 20px;
-}
-/* Шапка секции: текст слева, ссылка справа */
+
 .section-header {
     display: flex;
     justify-content: space-between;
@@ -132,54 +145,154 @@ main {
 }
 
 .section-header h2 {
-    font-family:Heebo, sans-serif;
     font-size: 22px;
-    color:#21243D ;
     font-weight: 400;
 }
-.section-header .view-all {
-    font-family:Heebo, sans-serif;
-    color: #00A8CC;
-    text-decoration: none;
+
+.view-all {
     font-size: 16px;
+    color: var(--link);
 }
-/* Сетка из двух карточек в ряд */
+
+.view-all:hover {
+    text-decoration: underline;
+}
+
 .posts-cards {
     display: flex;
     gap: 20px;
 }
-/* Стили самой карточки */
+
 .card {
-    background: #ffffff;
-    border-radius: 4px;
+    flex: 1;
     padding: 24px;
-    flex: 1;/* Обе карточки будут одинаковой ширины */
-    box-shadow: 0px 4px 10px rgba(187, 225, 250, 0.25);
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(187, 225, 250, 0.25);
 }
 
 .card h3 {
-    font-family: 'Heebo', sans-serif;
+    margin-bottom: 18px;
     font-size: 26px;
     font-weight: 700;
-    color: #21243D;
-    margin-bottom: 18px;
+    line-height: 1.3;
 }
 
 .card-info {
-    font-family: 'Heebo', sans-serif;
-    font-size: 18px;
-    color: #21243D;
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
+    font-size: 18px;
 }
 
-.card-info .divider {
-  margin: 0 10px;
+.divider {
+    width: 1px;
+    height: 18px;
+    margin: 0 20px;
+    background: var(--text);
 }
 
-.card p {
-  font-family: 'Heebo', sans-serif;
-  font-size: 16px;
-  color: #21243D;
-  line-height: 1.5;
+.card p:last-child {
+    line-height: 1.5;
 }
 
+/* ---------- Featured works ---------- */
+.works {
+    padding-top: 32px;
+    padding-bottom: 80px;
+}
+
+.works-title {
+    margin-bottom: 32px;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.work {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.work:first-of-type {
+    padding-top: 0;
+}
+
+.work img {
+    flex-shrink: 0;
+    width: 184px;
+    height: 135px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.work-body h3 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.work-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 10px 0 14px;
+}
+
+.year {
+    padding: 1px 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--navy);
+    border-radius: 20px;
+}
+
+.category {
+    font-size: 16px;
+    color: var(--muted);
+}
+
+.work-body p:last-child {
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    padding: 0 0 32px;
+    text-align: center;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-bottom: 16px;
+}
+
+.socials a {
+    display: block;
+    color: var(--navy);
+    transition: color .2s;
+}
+
+.socials a:hover {
+    color: var(--accent);
+}
+
+.socials svg {
+    width: 26px;
+    height: 26px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.copyright {
+    font-size: 12px;
+}
